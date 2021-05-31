@@ -2,8 +2,8 @@ import { imdbServices } from '../services';
 import { makeAutoObservable } from 'mobx'
 
 class Movies {
-    _Top250Movies = [];
-    _Top250TVs = [];
+    _Top250Movies = { items: [] };
+    _Top250TVs = { items: [] };
 
     constructor() {
         makeAutoObservable(this);
