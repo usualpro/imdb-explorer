@@ -1,1 +1,10 @@
-@import '../node_modules/bootstrap/scss/bootstrap';
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import "../node_modules/swiper/swiper.scss";
+@import "../node_modules/swiper/components/lazy/lazy.scss";
+@import "../node_modules/swiper/components/navigation/navigation.scss";
+@import "../node_modules/swiper/components/pagination/pagination.scss";
+@import "../node_modules/swiper/components/scrollbar/scrollbar.scss";
+
+.h-18rem {
+    min-height: 18.75rem;
+}
