@@ -1,16 +1,40 @@
 import { observer } from 'mobx-react-lite';
+import { useEffect } from 'react';
+import SwiperCore, { Navigation, Scrollbar, Lazy, Autoplay } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 import MovieStore from '../../stores/Movies';
 import { MediaListItem } from './MediaListItem';
 
-export const MediasList = observer((props) => {
+SwiperCore.use([Navigation, Scrollbar, Lazy, Autoplay]);
 
-    return <div>
+export const MediasList = observer((props) => {
+    useEffect(() => {
+        setTimeout(
+            () => {
+                window.dispatchEvent(new Event('resize'));
+            }, 500
+        )
+    }, []);
+    return <>
         <h1>{props.title}</h1>
-        <div className='row'>
+        <Swiper
+            className='w-100 h-18rem'
+            preloadImages={false}
+            navigation
+            lazy
+            autoplay
+            scrollbar={{ draggable: true }}
+            spaceBetween={50}
+            slidesPerView={4}
+        >
             {
-                MovieStore[props.list].items.map((movie, index) => <MediaListItem key={index} {...movie} />)
+                MovieStore[props.list].items.map(
+                    (movie, index) => <SwiperSlide key={index}>
+                        <MediaListItem  {...movie} />
+                    </SwiperSlide>
+                )
             }
-        </div>
-    </div>
+        </Swiper>
+    </>
 });
