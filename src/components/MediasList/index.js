@@ -12,7 +12,7 @@ export const MediasList = observer((props) => {
     useEffect(() => {
         setTimeout(
             () => {
-                window.dispatchEvent(new Event('resize'))
+                window.dispatchEvent(new Event('resize'));
             }, 500
         )
     }, []);
